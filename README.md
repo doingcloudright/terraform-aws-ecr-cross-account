@@ -13,7 +13,7 @@ The list allowed_read_principals is mandatory and defines which principals have 
 ```
 module "ecr_repo_a" {
     source                      = "doingcloudright/ecr-cross-account/aws"
-    version                     = "0.0.1"
+    version                     = "0.0.2"
     namespace                   = "dcr"
     name                        = "repo"
     allowed_read_principals     = ["arn:aws:iam::1234567890:root"]
@@ -26,7 +26,7 @@ module "ecr_repo_a" {
 ```
 module "ecr_repo_a" {
     source                      = "doingcloudright/ecr-cross-account/aws"
-    version                     = "0.0.1"
+    version                     = "0.0.2"
     namespace                   = "dcr"
     use_namespaces		= false
     name                        = "repo"
@@ -40,7 +40,7 @@ module "ecr_repo_a" {
 ```
 module "ecr_repo_a" {
     source                      = "doingcloudright/ecr-cross-account/aws"
-    version                     = "0.0.1"
+    version                     = "0.0.2"
     namespace                   = "dcr"
     name                        = "repo"
     allowed_read_principals     = ["arn:aws:iam::1234567890:root"]
@@ -53,7 +53,7 @@ module "ecr_repo_a" {
 ```
 module "ecr_repo_a" {
     source                      = "doingcloudright/ecr-cross-account/aws"
-    version                     = "0.0.1"
+    version                     = "0.0.2"
     namespace                   = "dcr"
     name                        = "repo"
     allowed_read_principals     = ["arn:aws:iam::1234567890:root"]
