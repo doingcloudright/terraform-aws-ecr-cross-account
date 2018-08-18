@@ -10,6 +10,8 @@ resource "aws_ecr_repository" "this" {
 
 # ecs_ecr_read_perms defines the regular read and login perms for principals defined in var.allowed_read_principals
 data "aws_iam_policy_document" "ecs_ecr_read_perms" {
+  count = "${var.create ? 1 : 0 }"
+
   statement {
     sid = "ECRREad"
 
@@ -35,6 +37,8 @@ data "aws_iam_policy_document" "ecs_ecr_read_perms" {
 
 # ecr_read_and_write_perms defines the ecr_read_and_write_perms for principals defined in var.allowed_write_principals
 data "aws_iam_policy_document" "ecr_read_and_write_perms" {
+  count = "${var.create ? 1 : 0 }"
+
   # The previously created ecs_ecr_read_perms will be merged into this document.
   source_json = "${data.aws_iam_policy_document.ecs_ecr_read_perms.json}"
 
@@ -69,7 +73,7 @@ data "aws_iam_policy_document" "ecr_read_and_write_perms" {
 # be used to populate the iam policy.
 resource "aws_ecr_repository_policy" "this" {
   count      = "${var.create ? 1 : 0 }"
-  repository = "${element(concat(aws_ecr_repository.this.*.name,list("")),0)}"
+  repository = "${aws_ecr_repository.this.name}"
 
   policy = "${length(var.allowed_write_principals) > 0
               ? data.aws_iam_policy_document.ecr_read_and_write_perms.json
@@ -99,7 +103,7 @@ locals {
 # The jsonencoded aws_ecr_lifecycle_policy_rule will be used as template, the variables will be replaced
 # A policy will be made per available prefix
 data "template_file" "lifecycle_policy" {
-  count = "${length(var.prefixes)}"
+  count = "${(var.create ? 1 : 0 ) * length(var.prefixes)}"
 
   template = "${jsonencode(local.aws_ecr_lifecycle_policy_rule)}"
 
@@ -114,6 +118,7 @@ data "template_file" "lifecycle_policy" {
 
 # The final rendered lifecycle_policy will be regexed to remove the double quotes surrounding strings
 resource "aws_ecr_lifecycle_policy" "this" {
+  count      = "${var.create ? 1 : 0 }"
   repository = "${aws_ecr_repository.this.name}"
 
   policy = "${replace(
