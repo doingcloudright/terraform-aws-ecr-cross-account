@@ -30,13 +30,13 @@ module "ecr_lifecycle_rule_untagged_100_days_since_image_pushed" {
 
 module "ecr_repo_with_namespaces" {
     source                      = "doingcloudright/ecr-cross-account/aws"
-    version                     = "0.1.2"
+    version                     = "0.1.4"
 
     namespace                   = "dcr"
     name                        = "repo"
 
     allowed_read_principals     = ["arn:aws:iam::1234567890:root"]
-    allowed_write_principals    = []
+    allowed_write_principals    = ["arn:aws:iam::1234567890:user/ecs-deploy"]
 
     lifecycle_policy_rules    = ["${module.ecr_lifecycle_rule_tagged_image_count_30.policy_rule}","${module.ecr_lifecycle_rule_untagged_100_days_since_image_pushed.policy_rule}" ]
     lifecycle_policy_rules_count = 2
@@ -48,13 +48,13 @@ module "ecr_repo_with_namespaces" {
 ```
 module "ecr_repo_with_namespaces" {
     source                      = "doingcloudright/ecr-cross-account/aws"
-    version                     = "0.1.2"
+    version                     = "0.1.4"
 
     namespace                   = "dcr"
     name                        = "repo"
 
     allowed_read_principals     = ["arn:aws:iam::1234567890:root"]
-    allowed_write_principals    = []
+    allowed_write_principals    = ["arn:aws:iam::1234567890:user/ecs-deploy"]
 
     # lifecycle_policy_rules    = []
     # lifecycle_policy_rules_count = 0
@@ -65,14 +65,14 @@ module "ecr_repo_with_namespaces" {
 ```
 module "ecr_repo_no_namespaces" {
     source                      = "doingcloudright/ecr-cross-account/aws"
-    version                     = "0.1.2"
+    version                     = "0.1.4"
 
     namespace                   = "dcr"
     use_namespaces		= false
     name                        = "repo"
 
     allowed_read_principals     = ["arn:aws:iam::1234567890:root"]
-    allowed_write_principals    = []
+    allowed_write_principals    = ["arn:aws:iam::1234567890:user/ecs-deploy"]
 
     # lifecycle_policy_rules    = []
     # lifecycle_policy_rules_count = 0

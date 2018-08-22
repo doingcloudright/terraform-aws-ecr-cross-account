@@ -3,14 +3,14 @@ output "repository_arn" {
   description = "Repository ARN"
 }
 
-output "registry_id" {
-  value       = "${element(concat(aws_ecr_repository.this.*.registry_id, list("")), 0)}"
-  description = "Registry ID"
-}
-
 output "repository_name" {
   value       = "${element(concat(aws_ecr_repository.this.*.name, list("")), 0)}"
   description = "Repository name"
+}
+
+output "registry_id" {
+  value       = "${element(concat(aws_ecr_repository.this.*.registry_id, list("")), 0)}"
+  description = "Registry ID"
 }
 
 output "registry_url" {
