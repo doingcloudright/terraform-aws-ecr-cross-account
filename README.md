@@ -30,7 +30,7 @@ module "ecr_lifecycle_rule_untagged_100_days_since_image_pushed" {
 
 module "ecr_repo_with_namespaces" {
     source                      = "doingcloudright/ecr-cross-account/aws"
-    version                     = "0.1.0"
+    version                     = "0.1.2"
 
     namespace                   = "dcr"
     name                        = "repo"
@@ -48,7 +48,7 @@ module "ecr_repo_with_namespaces" {
 ```
 module "ecr_repo_with_namespaces" {
     source                      = "doingcloudright/ecr-cross-account/aws"
-    version                     = "0.1.0"
+    version                     = "0.1.2"
 
     namespace                   = "dcr"
     name                        = "repo"
@@ -65,7 +65,7 @@ module "ecr_repo_with_namespaces" {
 ```
 module "ecr_repo_no_namespaces" {
     source                      = "doingcloudright/ecr-cross-account/aws"
-    version                     = "0.1.0"
+    version                     = "0.1.2"
 
     namespace                   = "dcr"
     use_namespaces		= false
