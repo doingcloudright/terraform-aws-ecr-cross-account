@@ -1,6 +1,6 @@
-output "arn" {
+output "repository_arn" {
   value       = "${element(concat(aws_ecr_repository.this.*.arn, list("")), 0)}"
-  description = "Registry ARN"
+  description = "Repository ARN"
 }
 
 output "registry_id" {
