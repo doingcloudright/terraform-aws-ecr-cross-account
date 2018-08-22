@@ -5,7 +5,7 @@ output "repository_arn" {
 
 output "registry_id" {
   value       = "${element(concat(aws_ecr_repository.this.*.registry_id, list("")), 0)}"
-  description = "Registry id"
+  description = "Registry ID"
 }
 
 output "repository_name" {
@@ -15,5 +15,5 @@ output "repository_name" {
 
 output "registry_url" {
   value       = "${element(concat(aws_ecr_repository.this.*.repository_url, list("")), 0)}"
-  description = "Registry url"
+  description = "Registry URL"
 }
