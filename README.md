@@ -5,6 +5,24 @@ This module simplifies the creation of an ECR Bucket which serves different AWS 
 
 The list allowed_read_principals is mandatory and defines which principals have read access to the repository. allowed_write_principals could define a principle which has write (&read) access to the repository e.g. the CICD user.
 
+
+_NOTE_ ECR Resource Level policies give certain arns specific access to the Repository configured. However, a minimal IAM policy for the specific role/user is needed to give it the access to ECR.
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "ecr:GetAuthorizationToken"
+            ],
+            "Resource": "*",
+            "Effect": "Allow"
+        }
+    ]
+}
+```
+
 ## Examples
 
 ### Repo with rotating images after count of 30 for prefix test,uat and prod, and rotage images for untagged after 100 days
