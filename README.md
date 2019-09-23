@@ -29,7 +29,7 @@ _NOTE_ ECR Resource Level policies give certain arns specific access to the Repo
 ```
 module "ecr_lifecycle_rule_tagged_image_count_30" {
   source = "doingcloudright/ecr-lifecycle-policy-rule/aws"
-  version = "0.0.4"
+  version = "1.0.0"
 
   tag_status = "tagged"
   count_type = "imageCountMoreThan"
@@ -39,7 +39,7 @@ module "ecr_lifecycle_rule_tagged_image_count_30" {
 
 module "ecr_lifecycle_rule_untagged_100_days_since_image_pushed" {
   source = "doingcloudright/ecr-lifecycle-policy-rule/aws"
-  version = "0.0.4"
+  version = "1.0.0"
 
   tag_status = "untagged"
   count_type = "sinceImagePushed"
@@ -48,7 +48,7 @@ module "ecr_lifecycle_rule_untagged_100_days_since_image_pushed" {
 
 module "ecr_repo_with_namespaces" {
     source                      = "doingcloudright/ecr-cross-account/aws"
-    version                     = "0.1.4"
+    version                     = "1.0.0"
 
     namespace                   = "dcr"
     name                        = "repo"
@@ -66,7 +66,7 @@ module "ecr_repo_with_namespaces" {
 ```
 module "ecr_repo_with_namespaces" {
     source                      = "doingcloudright/ecr-cross-account/aws"
-    version                     = "0.1.4"
+    version                     = "1.0.0"
 
     namespace                   = "dcr"
     name                        = "repo"
@@ -83,7 +83,7 @@ module "ecr_repo_with_namespaces" {
 ```
 module "ecr_repo_no_namespaces" {
     source                      = "doingcloudright/ecr-cross-account/aws"
-    version                     = "0.1.4"
+    version                     = "1.0.0"
 
     namespace                   = "dcr"
     use_namespaces		= false
