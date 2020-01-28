@@ -6,6 +6,12 @@ locals {
 resource "aws_ecr_repository" "this" {
   count = var.create ? 1 : 0
   name  = local.ecr_repo_name
+  
+  image_tag_mutability = var.image_tag_mutability
+  
+  image_scanning_configuration {
+    scan_on_push = var.scan_on_pushing
+  }
 }
 
 # ecs_ecr_read_perms defines the regular read and login perms for principals defined in var.allowed_read_principals
