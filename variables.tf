@@ -19,12 +19,12 @@ variable "name" {
 
 variable "allowed_read_principals" {
   description = "allowed_read_principals defines which external principals are allowed to read from the ECR repository"
-  type        = "list"
+  type        = list
 }
 
 variable "allowed_write_principals" {
   description = "allowed_write_principals defines which external principals are allowed to write to the ECR repository"
-  type        = "list"
+  type        = list
   default     = []
 }
 
@@ -36,4 +36,14 @@ variable "lifecycle_policy_rules_count" {
 variable "lifecycle_policy_rules" {
   description = "List of json lifecycle policy rules, created by another module: doingcloudright/ecr-lifecycle-policy-rule/aws"
   default     = []
+}
+
+variable "image_tag_mutability" {
+  description = "The tag mutability setting for the repository. Must be one of: MUTABLE or IMMUTABLE."
+  default     = "MUTABLE"
+}
+
+variable "scan_on_pushing" {
+  description = "Indicates whether images are scanned after being pushed to the repository (true) or not scanned (false)."
+  default     = false
 }
