@@ -12,6 +12,8 @@ resource "aws_ecr_repository" "this" {
   image_scanning_configuration {
     scan_on_push = var.scan_on_pushing
   }
+
+  tags = var.tags
 }
 
 # ecs_ecr_read_perms defines the regular read and login perms for principals defined in var.allowed_read_principals
