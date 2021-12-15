@@ -47,3 +47,8 @@ variable "scan_on_pushing" {
   description = "Indicates whether images are scanned after being pushed to the repository (true) or not scanned (false)."
   default     = false
 }
+
+variable "tags" {
+  description = "A map of tags to assign to the resource."
+  default     = {}
+}
